@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Travel Compass</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Travel Compass home">TRAVEL COMPASS</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#profile">Traveler Type</a>
+        <a href="#itineraries">Past Trips</a>
+        <a href="#watchlist">Price Watch</a>
+      </nav>
+      <button class="outline-button small" type="button" data-scroll-target="#planner">Start</button>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Personalized trip planning</p>
+          <h1 id="hero-title">Find places that fit how you actually travel.</h1>
+          <p>
+            Answer a few preference questions, add itineraries you loved, and keep a list of dream trips.
+            Travel Compass turns that into focused destination ideas and price-watch notes.
+          </p>
+          <div class="hero-actions">
+            <button class="solid-button" type="button" data-scroll-target="#planner">Build My Profile</button>
+            <button class="outline-button" type="button" data-scroll-target="#recommendations">See Matches</button>
+          </div>
+        </div>
+        <figure class="hero-media" aria-label="Mountain lake and travel planning preview">
+          <img
+            src="assets/banff.png"
+            alt="Stylized mountain lake travel scene"
+          >
+          <figcaption>
+            <span>Next match</span>
+            <strong id="hero-destination">Banff, Canada</strong>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="workspace" id="planner" aria-label="Trip personalization workspace">
+        <aside class="profile-panel" id="profile">
+          <div>
+            <p class="eyebrow">Your type</p>
+            <h2 id="traveler-type">Balanced Explorer</h2>
+            <p id="type-summary">
+              A flexible traveler who likes a mix of nature, good food, and low-friction logistics.
+            </p>
+          </div>
+          <dl class="score-list" aria-label="Preference scores">
+            <div>
+              <dt>Adventure</dt>
+              <dd><span style="--score: 55%" id="score-adventure"></span></dd>
+            </div>
+            <div>
+              <dt>Comfort</dt>
+              <dd><span style="--score: 52%" id="score-comfort"></span></dd>
+            </div>
+            <div>
+              <dt>Culture</dt>
+              <dd><span style="--score: 60%" id="score-culture"></span></dd>
+            </div>
+          </dl>
+          <div class="mini-note">
+            <strong id="budget-label">$1,800</strong>
+            <span>preferred trip budget</span>
+          </div>
+        </aside>
+
+        <section class="quiz" aria-labelledby="quiz-title">
+          <div class="section-heading">
+            <p class="eyebrow">Questionnaire</p>
+            <h2 id="quiz-title">Tune the trip engine</h2>
+          </div>
+
+          <form id="travel-form">
+            <fieldset>
+              <legend>What feels like a great day?</legend>
+              <div class="choice-grid">
+                <label><input type="radio" name="pace" value="hiking" checked> Hiking, overlooks, early starts</label>
+                <label><input type="radio" name="pace" value="sightseeing"> Museums, markets, classic sights</label>
+                <label><input type="radio" name="pace" value="slow"> Cafes, beaches, unplanned time</label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Which setting pulls you in first?</legend>
+              <div class="choice-grid">
+                <label><input type="checkbox" name="place" value="mountain" checked> Mountains</label>
+                <label><input type="checkbox" name="place" value="beach"> Beach</label>
+                <label><input type="checkbox" name="place" value="city" checked> City</label>
+                <label><input type="checkbox" name="place" value="forest"> Forest</label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>How do you prefer to get around?</legend>
+              <div class="segmented">
+                <label><input type="radio" name="transport" value="drive" checked><span>Drive</span></label>
+                <label><input type="radio" name="transport" value="fly"><span>Fly</span></label>
+                <label><input type="radio" name="transport" value="rail"><span>Rail</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Food preferences</legend>
+              <div class="form-row">
+                <label for="food-style">Food mood</label>
+                <select id="food-style" name="food">
+                  <option value="local">Local specialties</option>
+                  <option value="fine">Fine dining</option>
+                  <option value="casual">Casual and quick</option>
+                  <option value="vegetarian">Vegetarian friendly</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <label for="diet">Diet restrictions</label>
+                <input id="diet" name="diet" type="text" placeholder="e.g. vegetarian, halal, gluten-free">
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Budget comfort</legend>
+              <div class="slider-row">
+                <span>$700</span>
+                <input id="budget" name="budget" type="range" min="700" max="5000" step="100" value="1800">
+                <span>$5,000</span>
+              </div>
+            </fieldset>
+          </form>
+        </section>
+      </section>
+
+      <section class="split-section" id="itineraries">
+        <div class="section-heading">
+          <p class="eyebrow">Past itineraries</p>
+          <h2>Bring in trips you already loved</h2>
+          <p>
+            Upload prior plans, notes, PDFs, or text files. This prototype reads file names and text files locally
+            to simulate how the product would learn from your best trips.
+          </p>
+        </div>
+        <div class="upload-box">
+          <input id="itinerary-upload" type="file" multiple accept=".txt,.md,.pdf,.doc,.docx,.csv,.json">
+          <label for="itinerary-upload">
+            <span>Upload itineraries</span>
+            <strong>Drag-style picker for favorite past trips</strong>
+          </label>
+          <ul id="upload-list" aria-live="polite"></ul>
+        </div>
+      </section>
+
+      <section class="recommendations" id="recommendations" aria-labelledby="recommendations-title">
+        <div class="section-heading">
+          <p class="eyebrow">Recommendations</p>
+          <h2 id="recommendations-title">Places to consider</h2>
+        </div>
+        <div class="destination-grid" id="destination-grid"></div>
+      </section>
+
+      <section class="watchlist-section" id="watchlist" aria-labelledby="watchlist-title">
+        <div class="section-heading">
+          <p class="eyebrow">Someday travel</p>
+          <h2 id="watchlist-title">Watch dream trips for lower prices</h2>
+        </div>
+        <form class="watch-form" id="watch-form">
+          <label>
+            Destination
+            <input id="dream-destination" type="text" placeholder="Japan cherry blossom route" required>
+          </label>
+          <label>
+            Target price
+            <input id="target-price" type="number" min="100" step="25" placeholder="1200" required>
+          </label>
+          <button class="solid-button" type="submit">Add Watch</button>
+        </form>
+        <ul class="watch-list" id="watch-list"></ul>
+      </section>
+    </main>
+
+    <footer>
+      <strong>TRAVEL COMPASS</strong>
+      <span>Simple inputs. Personal trip ideas. Better timing.</span>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
